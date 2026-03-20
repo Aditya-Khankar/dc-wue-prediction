@@ -17,8 +17,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split, GridSearchCV, KFold
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 warnings.filterwarnings('ignore')
-os.makedirs('/home/claude/dc_wue_project/outputs', exist_ok=True)
-os.makedirs('/home/claude/dc_wue_project/models', exist_ok=True)
+os.makedirs('outputs', exist_ok=True)
+os.makedirs('models',  exist_ok=True)
 
 # ── Colors ────────────────────────────────────────────────
 NAVY   = '#1F3864'
@@ -59,7 +59,7 @@ plt.rcParams.update({
 })
 
 # ── Data ─────────────────────────────────────────────────
-df = pd.read_csv('/home/claude/data_centre_wue.csv')
+df = pd.read_csv('data/data_centre_wue.csv')
 FEATURES = ['Cooling_Type_Encoded','Ambient_Temperature_C',
             'Relative_Humidity_Pct','IT_Load_MW',
             'Server_Utilisation_Pct','Climate_Zone_Encoded']
@@ -201,7 +201,7 @@ cbar = hm.collections[0].colorbar
 cbar.ax.tick_params(labelsize=14)
 cbar.set_label('Pearson r', fontsize=15)
 
-plt.savefig('/home/claude/dc_wue_project/outputs/fig1_eda.png',
+plt.savefig('outputs/fig1_eda.png',
     dpi=180, bbox_inches='tight', facecolor=WHITE)
 plt.close()
 print("✓ Figure 1: EDA (22x30, large fonts, 4-row layout)")
@@ -265,7 +265,7 @@ for ax, vals, title, unit, better in [
     bars[0].set_linewidth(3.0)
 
 plt.tight_layout()
-plt.savefig('/home/claude/dc_wue_project/outputs/fig2_model_comparison.png',
+plt.savefig('outputs/fig2_model_comparison.png',
     dpi=180, bbox_inches='tight', facecolor=WHITE)
 plt.close()
 print("✓ Figure 2: Model comparison (22x9)")
@@ -350,7 +350,7 @@ ax2.tick_params(labelsize=15)
 ax2.set_xticks(range(0, 32, 5))
 
 plt.tight_layout()
-plt.savefig('/home/claude/dc_wue_project/outputs/fig3_gridsearchcv.png',
+plt.savefig('outputs/fig3_gridsearchcv.png',
     dpi=180, bbox_inches='tight', facecolor=WHITE)
 plt.close()
 print("✓ Figure 3: GridSearchCV (22x9)")
@@ -365,7 +365,7 @@ residuals  = y_test - y_pred
 
 import joblib
 joblib.dump(best_model,
-    '/home/claude/dc_wue_project/models/knn_wue_model.pkl')
+    'models/knn_wue_model.pkl')
 
 fig, axes = plt.subplots(2, 2, figsize=(22, 18))
 fig.suptitle(
@@ -451,7 +451,7 @@ ax4.set_xlim(0, max(importances)+0.12)
 ax4.tick_params(labelsize=15)
 
 plt.tight_layout(h_pad=3.5, w_pad=3.0)
-plt.savefig('/home/claude/dc_wue_project/outputs/fig4_results.png',
+plt.savefig('outputs/fig4_results.png',
     dpi=180, bbox_inches='tight', facecolor=WHITE)
 plt.close()
 print("✓ Figure 4: Final results (22x18)")
@@ -531,7 +531,7 @@ ax2.legend(handles=[green_p,orange_p,red_p],
 ax2.tick_params(labelsize=15)
 
 plt.tight_layout()
-plt.savefig('/home/claude/dc_wue_project/outputs/fig5_singapore.png',
+plt.savefig('outputs/fig5_singapore.png',
     dpi=180, bbox_inches='tight', facecolor=WHITE)
 plt.close()
 print("✓ Figure 5: Singapore use case (22x10)")
