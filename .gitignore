@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated files (run pipeline to recreate)
+models/*.pkl
+outputs/*.png
+outputs/*.npy
+
+# API keys — never commit
+secrets.py
+config_local.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
