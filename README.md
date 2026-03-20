@@ -1,5 +1,5 @@
-# Data Centre Water Consumption Prediction
-## Using KNN Regression — End-to-End ML Pipeline
+# Predicting Cooling Water Consumption in Data Centres
+## KNN Regression — End-to-End ML Pipeline
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![sklearn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange)](https://scikit-learn.org)
