@@ -42,9 +42,7 @@ ambient temperature, and water consumption is **locally structured**:
 | Linear Regression | 0.1007 | 0.3131 | Yes — but wrong |
 | Ridge Regression | 0.1008 | 0.3131 | Yes — but wrong |
 
-> KNN wins by **7.06x** over Linear Regression on R².
-> Random Forest wins on R² but **cannot explain** which past DCs
-> drove the prediction — engineers reject black box models.
+Random Forest achieves higher R² but cannot explain which past data centres drove the prediction — a functional requirement in engineering applications.
 
 ---
 
@@ -111,7 +109,6 @@ Best metric  : manhattan
 R²           : 0.7103
 RMSE         : 0.1777 L/kWh
 MAE          : 0.1072 L/kWh
-KNN vs LR    : 7.06x better R²
 vs baseline  : 46.3% improvement
 ```
 
@@ -138,17 +135,13 @@ Government mandates BCA Green Mark certification (WUE < 0.4 L/kWh).
 ```
 dc-wue-prediction/
 ├── data/
-│   └── data_centre_wue.csv      ← 1094 rows, 14 columns
-├── outputs/
-│   ├── fig1_eda.png             ← EDA visualisations
-│   ├── fig2_model_comparison.png← KNN vs other models
-│   ├── fig3_gridsearchcv.png   ← K selection elbow plot
-│   └── fig4_final_results.png  ← Actual vs predicted, residuals
-├── models/
-│   └── knn_wue_model.pkl       ← Saved sklearn Pipeline
-├── notebooks/
-│   └── knn_wue_notebook.ipynb  ← Kaggle-ready notebook
-├── knn_wue_pipeline.py         ← Main pipeline script
+│   └── data_centre_wue.csv         ← 1094 rows, 14 columns
+├── outputs/                         ← figures generated on run
+├── models/                          ← model saved on run
+├── knn_wue_pipeline.py
+├── generate_figures.py
+├── predict.py
+├── collect_data_with_api.py
 ├── requirements.txt
 ├── LICENSE
 └── README.md
@@ -160,7 +153,7 @@ dc-wue-prediction/
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_USERNAME/dc-wue-prediction
+git clone https://github.com/Aditya-Khankar/dc-wue-prediction
 cd dc-wue-prediction
 
 # Install
@@ -263,6 +256,3 @@ MIT License — see [LICENSE](LICENSE)
 
 ---
 
-*Built by NITK Surathkal ECE — 2026*
-*Contribution: First publicly available KNN-based WUE predictor
-with real company data and physics-grounded simulation.*
